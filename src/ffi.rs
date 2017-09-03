@@ -224,6 +224,8 @@ extern {
     pub fn nvgTextAlign(ctx: *mut NVGcontext, align: c_uint);
     pub fn nvgFontFaceId(ctx: *mut NVGcontext, font: c_int);
     pub fn nvgFontFace(ctx: *mut NVGcontext, font: *const c_char);
+    pub fn nvgAddFallbackFontId(ctx: *mut NVGcontext, baseFont: c_int, fallbackFont: c_int);
+    pub fn nvgAddFallbackFont(ctx: *mut NVGcontext, baseFont: *const c_char, fallbackFont: *const c_char);
     pub fn nvgText(ctx: *mut NVGcontext, x: c_float, y: c_float, string: *const c_char, end: *const c_char) -> c_float;
     pub fn nvgTextBox(ctx: *mut NVGcontext, x: c_float, y: c_float, breakRowWidth: c_float, string: *const c_char, end: *const c_char);
     pub fn nvgTextBounds(ctx: *mut NVGcontext, x: c_float, y: c_float, string: *const c_char, end: *const c_char, bounds: *mut c_float) -> c_float;

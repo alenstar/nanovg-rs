@@ -800,6 +800,20 @@ impl Context {
         };
         unsafe { ffi::nvgFontFace(self.ptr, c_font.as_ptr()) }
     }
+    pub fn add_fallback_font_id(&self, baseFont: i32, fallbackFont: i32) {
+        unsafe { ffi::nvgAddFallbackFontId(self.ptr, baseFont, fallbackFont) }
+    }
+    pub fn add_fallback_font(&self, baseFont: &str, fallbackFont: &str) {
+        let c_font = match CString::new(baseFont.as_bytes()){
+            Ok(o) => o,
+            Err(_) => return
+        };
+        let c_fallbackfont = match CString::new(fallbackFont.as_bytes()){
+            Ok(o) => o,
+            Err(_) => return
+        };
+        unsafe { ffi::nvgAddFallbackFont(self.ptr, c_font.as_ptr(), c_fallbackfont.as_ptr()) }
+    }
     pub fn text(&self, x: f32, y: f32, text: &str) -> f32 {
         let c_text = match CString::new(text.as_bytes()){
             Ok(o) => o,
